@@ -9,8 +9,8 @@ class analysis_system:
     def __init__(self, upperbound,times_in_a_row):
         self.upperbound=upperbound             #消費金額上限
         self.timelimit=[[20000,70000]]   #非正常消費時間
-        self.times_in_a_row=times_in_a_row            #一小時內連續消費次數上限
-        self.privous_consumption_time=[] #紀錄曾經消費時間
+        self.times_in_a_row=times_in_a_row #一小時內連續消費次數上限
+        self.privous_consumption_time=[]  #紀錄曾經消費時間
         self.data_count=50;
         self.auto_upperbound=upperbound
         self.different_upperbound=0.1
@@ -31,8 +31,8 @@ class analysis_system:
         time_error=self.__time_detection(data)                       #消費時間例外偵測
         upperbound_error=self.__upperbound_detection(data)           #交費金額例外偵測
         times_in_a_row_error=self.__times_in_a_row_detection(data)   #連續消費例外偵測
-        self.auto_upperbound=self.auto_upperbound*(self.data_count/(self.data_count+1))+(data.amount/self.data_count)#更新消費平均
-        if abs(self.auto_upperbound-self.upperbound)>self.auto_upperbound*self.different_upperbound:#如果消費平均與設定差1成
+        self.auto_upperbound=self.auto_upperbound*(self.data_count/(self.data_count+1))+(data.amount/(self.data_count+1))#更新消費平均
+        if self.auto_upperbound-self.upperbound>self.auto_upperbound*self.different_upperbound:#如果消費平均與設定差1成
             #通知使用者應該修正數值
             print("請E-Mail通知使用者預測數值為",self.auto_upperbound,self.upperbound)
         self.data_count+=1#消費計數+1
