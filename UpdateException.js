@@ -23,15 +23,6 @@ function test2(){
     console.log("789");
 }
 
-/*function start(){
-    console.log("123");
-    //document.getElementById("submitButton").addEventListener("click", test1, false);
-    //document.getElementsByName("updateButton").click = test();
-    //button = document.getElementsByName("updateButton").addEventListener("click", test2, false);
-    //document.getElementsByName("updateButton").addEventListener("click", test2, false);
-    //console.log("123");
-    //let button = document.getElementById("submitButton").addEventListener("onclick", myFunction, false);
-}*/
 function listen(){
     console.log("789");
     /*setTimeout(function(){
