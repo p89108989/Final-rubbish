@@ -51,7 +51,9 @@ class analysis_system:
 #            cur.execute(sql_1)
 #            conn.commit()
         if self.acc != "":
-            sql_3="UPDATE login_system SET  predict_money='"+str(self.upperbound)+"', cost_in_one_hour='"+str(self.times_in_a_row)+"', data_count='"+str(self.data_count)+"',predict_money_custom='"+str(self.auto_upperbound)+" WHERE account_id ='"+str(self.acc)+"'"
+            sql_3="SET SQL_SAFE_UPDATES=0"
+            cur.execute(sql_3)
+            sql_3="UPDATE login_system SET  predict_money='"+str(self.upperbound)+"', cost_in_one_hour='"+str(self.times_in_a_row)+"', data_count='"+str(self.data_count)+"',predict_money_custom='"+str(self.auto_upperbound)+"' WHERE account_id ='"+str(self.acc)+"'"
             cur.execute(sql_3)
             conn.commit()
         conn.close()
@@ -88,7 +90,7 @@ class analysis_system:
     def detect_execption(self,data):                #例外偵測
         time_error=self.__time_detection(data)                       #消費時間例外偵測
         upperbound_error=self.__upperbound_detection(data)           #交費金額例外偵測
-        times_in_a_row_error=False#self.__times_in_a_row_detection(data)   #連續消費例外偵測
+        times_in_a_row_error=self.__times_in_a_row_detection(data)   #連續消費例外偵測
         self.auto_upperbound=self.auto_upperbound*(self.data_count/(self.data_count+1))+(data.amount/(self.data_count+1))#更新消費平均
         
         if self.auto_upperbound-self.upperbound>self.auto_upperbound*self.different_upperbound:#如果消費平均與設定差1成
@@ -117,13 +119,13 @@ class analysis_system:
         cur = conn.cursor()
         cnt=0
         if self.acc != "":   
-            sql_6="SELECT sum(ordernumber)  FROM predict_module   WHERE cost_time>='" + self.data.consumption_time-10000 + "' "
+            sql_6="INSERT INTO predict_module(account_id ,money ,cost_time)VALUES('"+str(self.acc)+"','"+str(data.amount)+"','"+str(data.consumption_time)+"')"
             cur.execute(sql_6)
-            fet= cur.fetchone() 
-            cnt=int(fet)  
-            sql_7="INSERT INTO predict_module(account_id ,money ,cost_time)VALUES('"+str(self.acc)+"','"+str(data.amount)+"','"+str(data.consumption_time)+"')"
-            cur.execute(sql_7)
             conn.commit()
+            sql_7="SELECT sum(ordernumber)  FROM predict_module  WHERE cost_time>='" + str(data.consumption_time-10000) + "' "
+            cur.execute(sql_7)
+            fet= cur.fetchone() 
+            cnt=int(fet[0])  
         conn.close()
         if cnt>self.times_in_a_row:  #若連續消費超過限制則有異常
             return True
@@ -135,18 +137,19 @@ class a:
         self.consumption_time=consumption_time#消費時間
         self.amount=amount#消費金額
 
+
 func=analysis_system("LOU")
 func.load_data()
 #func.renew_data("LOU")
 func.show_time_limit()
 #func.add_time_limit(190000, 220000)
 #func.delete_time_limit(1)
-func.show_time_limit()
-func.load_data()
+#func.show_time_limit()
+#func.load_data()
 #時間資料為年月日時分秒
 testa=a(20220610030522,1000)
 testb=a(20220610090722,2000)
-testc=a(20220610090822,7000)
+testc=a(20220610090822,7000)    
 testd=a(20220610090922,8000)
 teste=a(20220610091022,100000)
 #第一個參數為消費時間是否異常，第二個參數為消費金額是否異常，第三個參數為連續消費次數是否異常
