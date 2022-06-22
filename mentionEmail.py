@@ -54,3 +54,31 @@ def mentionEmail(person,errorList):
     server.send_message(msg)
     server.close() #發送完成後關閉連線
 
+     
+def mentionEmail_fix(person,maxMoney):
+    msgcnt=""
+    msgcnt+="敬愛的用戶您好:<br>提醒您，由於您預測的上限金額:"+maxMoney+"比系統預測的金額:9999相差略大建議您進行更改"
+    sql_1="SELECT account_id,email FROM login_system WHERE account_id ='" + person + "' "
+    cur.execute(sql_1)
+    id_acc= cur.fetchone()
+    emailAccount=id_acc[1]
+    
+    msg=email.message.EmailMessage()
+    from_a="chenyunhao1222@gmail.com"
+    to_b=emailAccount
+
+    msg["From"]=from_a
+    msg["To"]=to_b
+    msg["Subject"]="預測金額建議修改通知"
+    #寄送郵件主要內容
+    msg.add_alternative(msgcnt,subtype="html")
+
+    acc="chenyunhao1222@gmail.com"
+    password="imignpkuojbipeat"#應用程式密碼
+    #連線到SMTP Sevver
+    import smtplib
+    #可以從網路上找到主機名稱和連線埠
+    server=smtplib.SMTP_SSL("smtp.gmail.com",465) #建立gmail連驗
+    server.login(acc,password)
+    server.send_message(msg)
+    server.close() #發送完成後關閉連線
