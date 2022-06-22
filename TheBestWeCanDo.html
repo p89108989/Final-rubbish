@@ -287,7 +287,7 @@
                                     <!-- Portfolio Modal - Image-->
                                     <img class="img-fluid rounded mb-5" src="assets/img/portfolio/cake.png" alt="..." />
                                     <!-- Portfolio Modal - Text-->
-                                    <form id="ChangeForm" data-sb-form-api-token="API_TOKEN" action="test.py">
+                                    <form id="ChangeForm" data-sb-form-api-token="API_TOKEN">
                                         <!-- Name input-->
                                         <div class="form-floating mb-3">
                                             <input class="form-control" id="price" type="text" placeholder="Enter your price..." data-sb-validations="required" />
@@ -301,14 +301,14 @@
                                         </div>
                                         <!-- Email address input-->
                                         <div class="form-floating mb-3">
-                                            <input class="form-control" id="TimeStart" type="time"  data-sb-validations="required" />
-                                            <label for="TimeStart">警告時段(起)</label>
-                                            <div class="invalid-feedback" data-sb-feedback="TimeStart:required">請填寫時段.</div>
+                                            <input class="form-control" id="Timezone" type="time"  data-sb-validations="required" name="timeStart"/>
+                                            <label for="Timezone">警告時段(起)</label>
+                                            <div class="invalid-feedback" data-sb-feedback="Timezone:required">請填寫時段.</div>
                                         </div>
                                         <div class="form-floating mb-3">
-                                            <input class="form-control" id="TimeEnd" type="time"  data-sb-validations="required" />
-                                            <label for="TimeEnd">警告時段(訖)</label>
-                                            <div class="invalid-feedback" data-sb-feedback="TimeEnd:required">請填寫時段.</div>
+                                            <input class="form-control" id="Timezone" type="time"  data-sb-validations="required" name="timeEnd"/>
+                                            <label for="Timezone">警告時段(訖)</label>
+                                            <div class="invalid-feedback" data-sb-feedback="Timezone:required">請填寫時段.</div>
                                         </div>
                                         <div class="d-none" id="submitSuccessMessage">
                                         </div>
@@ -366,6 +366,6 @@
         <!-- * *                               SB Forms JS                               * *-->
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <!--script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script-->
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
     </body>
 </html>
