@@ -9,9 +9,9 @@ function myFunction() {
   //document.getElementById("price").innerHTML = "Hello World";
   console.log("111");
   let price = document.getElementById("price").value;
-  let times = document.getElementById("times").value;
-  let startTime = document.getElementById("TimeStart").value;
-  let endTime = document.getElementById("TimeEnd").value;
+  let times = document.getElementById("Times").value;
+  let startTime = document.getElementsByName("TimeStart")[0].value;
+  let endTime = document.getElementsByName("TimeEnd")[0].value;
   console.log(price+" \n"+times+" \n"+startTime+" \n"+endTime);
   console.log("222");
 }
@@ -38,7 +38,9 @@ function listen(){
         console.log("I am the third log after 5 seconds");
         
     },5000);*/
-    submit = document.getElementsByName("updateButton");
+    submit = document.getElementsByName("updateButton")[0];
+    //console.log("onlyname",document.getElementsByName("updateButton"));
+    //console.log("onlyname2",document.getElementsByName("updateButton")[0]);
     //submit = document.getElementById("updateButton");
     submit.addEventListener("click", myFunction, false);
     console.log("987");
