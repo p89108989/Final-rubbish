@@ -6,6 +6,7 @@ Created on Fri Jun 10 13:58:03 2022
 """
 import random
 import pymysql
+import mentionEmail
 
 class analysis_system:
     def __init__(self, acc=""):
@@ -50,7 +51,7 @@ class analysis_system:
 #            cur.execute(sql_1)
 #            conn.commit()
         if self.acc != "":
-            sql_3="UPDATE login_system SET  predict_money='"+str(self.upperbound)+"', cost_in_one_hour='"+str(self.times_in_a_row)+"', data_count='"+str(self.data_count)+"',predict_money_custom='"+str(self.auto_upperbound)+"' WHERE account_id ='"+str(self.acc)+"'"
+            sql_3="UPDATE login_system SET  predict_money='"+str(self.upperbound)+"', cost_in_one_hour='"+str(self.times_in_a_row)+"', data_count='"+str(self.data_count)+"',predict_money_custom='"+str(self.auto_upperbound)+" WHERE account_id ='"+str(self.acc)+"'"
             cur.execute(sql_3)
             conn.commit()
         conn.close()
@@ -87,13 +88,17 @@ class analysis_system:
     def detect_execption(self,data):                #例外偵測
         time_error=self.__time_detection(data)                       #消費時間例外偵測
         upperbound_error=self.__upperbound_detection(data)           #交費金額例外偵測
-        times_in_a_row_error=self.__times_in_a_row_detection(data)   #連續消費例外偵測
+        times_in_a_row_error=False#self.__times_in_a_row_detection(data)   #連續消費例外偵測
         self.auto_upperbound=self.auto_upperbound*(self.data_count/(self.data_count+1))+(data.amount/(self.data_count+1))#更新消費平均
+        
         if self.auto_upperbound-self.upperbound>self.auto_upperbound*self.different_upperbound:#如果消費平均與設定差1成
             #通知使用者應該修正數值
+            mentionEmail.mentionEmail_fix(self.acc,self.upperbound,int(self.auto_upperbound))
             print("請E-Mail通知使用者預測數值為",self.auto_upperbound,self.upperbound)
         self.data_count+=1#消費計數+1
         self.renew_data()
+        if time_error or upperbound_error or upperbound_error:
+            mentionEmail.mentionEmail(self.acc, [time_error,upperbound_error,times_in_a_row_error])
         return [time_error,upperbound_error,times_in_a_row_error]
         
     def __time_detection(self,data):
@@ -130,7 +135,7 @@ class a:
         self.consumption_time=consumption_time#消費時間
         self.amount=amount#消費金額
 
-func=analysis_system(9000,3,"LOU")
+func=analysis_system("LOU")
 func.load_data()
 #func.renew_data("LOU")
 func.show_time_limit()
