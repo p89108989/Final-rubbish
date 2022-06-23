@@ -1,16 +1,42 @@
-var button
-var submit
-let price
-let times
-let startTime
-let endTime
+var button;
+var submit;
+var price;
+var times;
+var startTime;
+var endTime;
+
+function throwDB(){
+    location.href = ".php?price=" + price;
+    location.href = ".php?times=" + times;
+    location.href = ".php?startTime=" + startTime;
+    location.href = ".php?endTime=" + endTime;
+}
 
 function myFunction() {
-    let price = document.getElementById("price").value;
-    let times = document.getElementById("Times").value;
-    let startTime = document.getElementsByName("timeStart")[0].value;
-    let endTime = document.getElementsByName("timeEnd")[0].value;
-    console.log(price+" \n"+times+" \n"+startTime+" \n"+endTime);
+    price = document.getElementById("price").value;
+    times = document.getElementById("Times").value;
+    startTime = document.getElementsByName("timeStart")[0].value;
+    endTime = document.getElementsByName("timeEnd")[0].value;
+    
+    //console.log(price+" \n"+times+" \n"+startTime+" \n"+endTime);
+    //console.log(typeof price+" \n"+typeof times+" \n"+typeof startTime+" \n"+typeof endTime);
+
+    //時間字串處理
+    let temp = startTime.split(":");
+    startTime = temp[0] + temp[1];
+    temp = endTime.split(":");
+    endTime = temp[0] + temp[1];
+
+    //字串轉數字
+    price = parseInt(price);
+    times = parseInt(times);
+    startTime = parseInt(startTime);
+    endTime = parseInt(endTime);
+
+    //console.log(price+" \n"+times+" \n"+startTime+" \n"+endTime);
+    //console.log(typeof price+" \n"+typeof times+" \n"+typeof startTime+" \n"+typeof endTime);
+
+    throwDB();
 }
 
 function listen(){

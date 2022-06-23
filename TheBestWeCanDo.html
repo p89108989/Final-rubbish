@@ -156,12 +156,12 @@
                     <form id="ConnnectCard" data-sb-form-api-token="API_TOKEN">
                         <!-- Name input-->
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="account" type="text" placeholder="Enter your account..." data-sb-validations="required" />
+                            <input class="form-control" id="account" type="text" placeholder="Enter your account..." data-sb-validations="required" name="loginAcc"/>
                             <label for="account">帳號</label>
                             <div class="invalid-feedback" data-sb-feedback="account:required">請填寫帳號.</div>
                         </div>
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="password" type="text" placeholder="Enter your card password..." data-sb-validations="required" />
+                            <input class="form-control" id="password" type="text" placeholder="Enter your card password..." data-sb-validations="required" name="loginPW"/>
                             <label for="password">密碼</label>
                             <div class="invalid-feedback" data-sb-feedback="password:required">請填寫密碼.</div>
                         </div>
@@ -170,7 +170,7 @@
                         <!-- an error submitting the form-->
                         <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
                         <!-- Submit Button-->
-                        <button class="btn btn-primary btn-xl disabled" id="submitButton" type="submit">登入</button>
+                        <button class="btn btn-primary btn-xl disabled" id="submitButton" type="submit" name="login">登入</button>
                     </form>
                   </div>
                 </div>
@@ -188,12 +188,12 @@
                     <form id="ConnnectCard" data-sb-form-api-token="API_TOKEN">
                         <!-- Name input-->
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="account" type="text" placeholder="Enter your account..." data-sb-validations="required" />
+                            <input class="form-control" id="account" type="text" placeholder="Enter your account..." data-sb-validations="required" name="regAcc"/>
                             <label for="account">帳號</label>
                             <div class="invalid-feedback" data-sb-feedback="account:required">請填寫帳號.</div>
                         </div>
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="password" type="text" placeholder="Enter your card password..." data-sb-validations="required" />
+                            <input class="form-control" id="password" type="text" placeholder="Enter your card password..." data-sb-validations="required" name="regPW"/>
                             <label for="password">密碼</label>
                             <div class="invalid-feedback" data-sb-feedback="password:required">請填寫密碼.</div>
                         </div>
@@ -202,7 +202,7 @@
                         <!-- an error submitting the form-->
                         <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
                         <!-- Submit Button-->
-                        <button class="btn btn-primary btn-xl disabled" id="submitButton" type="submit">註冊</button>
+                        <button class="btn btn-primary btn-xl disabled" id="submitButton" type="submit" name="register">註冊</button>
                     </form>
                   </div>
                 </div>
@@ -362,6 +362,7 @@
         <!-- Core theme JS-->
         <script src="script/scripts.js"></script>
         <script src="UpdateException.js"></script>
+        <script src="login_register.js"></script>
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <!-- * *                               SB Forms JS                               * *-->
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
