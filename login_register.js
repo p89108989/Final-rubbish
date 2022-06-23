@@ -9,16 +9,20 @@ function login(){
     loginAcc = document.getElementsByName("loginAcc")[0].value; //get登入帳號
     loginPW = document.getElementsByName("loginPW")[0].value;   //get登入密碼
     //console.log(loginAcc+" "+loginPW);
-    location.href = ".php?loginAcc=" + loginAcc;    //丟登入帳號給php
-    location.href = ".php?loginPW=" + loginPW;      //丟登入密碼給php
+    var a = {"loginAcc":loginAcc,"loginPW":loginPW};
+    var my = JSON.stringify(a);
+    location.href = "login.php?package=" + my;    //丟登入帳號給php
+    //丟登入密碼給php
 }
 
 function register(){
     regAcc = document.getElementsByName("regAcc")[0].value; //get註冊帳號
     regPW = document.getElementsByName("regPW")[0].value;   //get註冊密碼
     //console.log(regAcc+" "+regPW);
-    location.href = ".php?regAcc=" + regAcc;        //丟註冊帳號給php
-    location.href = ".php?regPW=" + regPW;          //丟註冊密碼給php
+    var b = {"regAcc":regAcc,"regPW":regPW};
+    var myb = JSON.stringify(b);
+    location.href = "connect_test.php?package=" + myb; 
+            //丟註冊帳號給php         //丟註冊密碼給php
 }
 
 function start(){
