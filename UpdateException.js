@@ -7,7 +7,7 @@ var endTime;
 var loginAcc;
 var loginButton;
 
-function throwDB(){
+function throwDB2(){
     //location.href = ".php?price=" + price;
     //location.href = ".php?times=" + times;
     //location.href = ".php?startTime=" + startTime;
@@ -18,7 +18,7 @@ function throwDB(){
     location.href = "UpdateException.php?package=" + myJSON;
 }
 
-function myFunction() {
+function myFunction2() {
     price = document.getElementById("price").value;
     times = document.getElementById("Times").value;
     startTime = document.getElementsByName("timeStart")[0].value;
@@ -36,18 +36,18 @@ function myFunction() {
     startTime = parseInt(startTime);
     endTime = parseInt(endTime);
 
-    throwDB();
+    throwDB2();
 }
 
 
-function listen(){
+function listen2(){
     submit = document.getElementsByName("updateButton")[0];
     //submit = document.getElementById("updateButton");
-    submit.addEventListener("click", myFunction, false);
+    submit.addEventListener("click", myFunction2, false);
 }
 
 function start(){
-    button = document.getElementById("secPic").addEventListener("click", listen, false);
+    button = document.getElementById("secPic").addEventListener("click", listen2, false);
 }
 
 window.addEventListener("load", start, false);

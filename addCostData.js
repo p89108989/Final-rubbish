@@ -4,13 +4,13 @@ var cardNum;
 var price;
 var dateTime;
 
-function throwDB(){
+function throwDB3(){
     var tempJSON = {"cardNum":cardNum, "price":price, "dateTime":dateTime};
     var myJSON = JSON.stringify(tempJSON);
-    location.href = "addCostDate.php?package=" + myJSON;
+    location.href = "addCostData.php?package=" + myJSON;
 }
 
-function myFunction() {
+function myFunction3() {
     cardNum = document.getElementById("handmadecard").value;
     price = document.getElementById("handmadeprice").value;
     let date = document.getElementById("handmadeDate").value;
@@ -27,17 +27,17 @@ function myFunction() {
     price = parseInt(price);
     dateTime = parseInt(dateTime);
 
-    throwDB();
+    throwDB3();
 }
 
-function listen(){
+function listen3(){
     submit = document.getElementsByName("addDataButton")[0];
     //submit = document.getElementById("updateButton");
-    submit.addEventListener("click", myFunction, false);
+    submit.addEventListener("click", myFunction3, false);
 }
 
 function start(){
-    button = document.getElementById("thirdPic").addEventListener("click", listen, false);
+    button = document.getElementById("thirdPic").addEventListener("click", listen3, false);
 }
 
 window.addEventListener("load", start, false);
