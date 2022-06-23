@@ -39,9 +39,6 @@ function myFunction() {
     throwDB();
 }
 
-function login(){
-    loginAcc = document.getElementsByName("loginAcc")[0].value;
-}
 
 function listen(){
     submit = document.getElementsByName("updateButton")[0];
@@ -51,7 +48,6 @@ function listen(){
 
 function start(){
     button = document.getElementById("secPic").addEventListener("click", listen, false);
-    loginButton = document.getElementsByName("login")[0].addEventListener("click", login, false);
 }
 
 window.addEventListener("load", start, false);

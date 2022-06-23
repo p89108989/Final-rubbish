@@ -22,7 +22,6 @@ function myFunction() {
     temp = time.split(":");
     time = temp[0] + temp[1];
     dateTime = date + time + '00';
-    window.alert(dateTime);
     //字串轉數字
     cardNum = parseInt(cardNum);
     price = parseInt(price);
