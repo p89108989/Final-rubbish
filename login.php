@@ -26,7 +26,7 @@ if($link){
     else
     {
         echo "<script>window.alert('login failed --有一個錯 自己想');</script>";
-        echo ("<script>window.location.href='TheBestWeCanDo.html'</script>"); 
+        echo ("<script>window.location.href='JokeOnYou.html'</script>"); 
     }
     
 }
