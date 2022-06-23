@@ -4,12 +4,18 @@ var price;
 var times;
 var startTime;
 var endTime;
+var loginAcc;
+var loginButton;
 
 function throwDB(){
-    location.href = ".php?price=" + price;
-    location.href = ".php?times=" + times;
-    location.href = ".php?startTime=" + startTime;
-    location.href = ".php?endTime=" + endTime;
+    //location.href = ".php?price=" + price;
+    //location.href = ".php?times=" + times;
+    //location.href = ".php?startTime=" + startTime;
+    //location.href = ".php?endTime=" + endTime;
+
+    var tempJSON = {"price":price, "times":times, "startTime":startTime, "endTime":endTime};
+    var myJSON = JSON.stringify(tempJSON);
+    location.href = "UpdateException.php?package=" + myJSON;
 }
 
 function myFunction() {
@@ -17,9 +23,6 @@ function myFunction() {
     times = document.getElementById("Times").value;
     startTime = document.getElementsByName("timeStart")[0].value;
     endTime = document.getElementsByName("timeEnd")[0].value;
-    
-    //console.log(price+" \n"+times+" \n"+startTime+" \n"+endTime);
-    //console.log(typeof price+" \n"+typeof times+" \n"+typeof startTime+" \n"+typeof endTime);
 
     //時間字串處理
     let temp = startTime.split(":");
@@ -33,10 +36,11 @@ function myFunction() {
     startTime = parseInt(startTime);
     endTime = parseInt(endTime);
 
-    //console.log(price+" \n"+times+" \n"+startTime+" \n"+endTime);
-    //console.log(typeof price+" \n"+typeof times+" \n"+typeof startTime+" \n"+typeof endTime);
-
     throwDB();
+}
+
+function login(){
+    loginAcc = document.getElementsByName("loginAcc")[0].value;
 }
 
 function listen(){
@@ -47,6 +51,7 @@ function listen(){
 
 function start(){
     button = document.getElementById("secPic").addEventListener("click", listen, false);
+    loginButton = document.getElementsByName("login")[0].addEventListener("click", login, false);
 }
 
 window.addEventListener("load", start, false);
