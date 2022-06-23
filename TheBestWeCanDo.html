@@ -87,7 +87,7 @@
                     </div>
                     <!-- Portfolio Item 3-->
                     <div class="col-md-6 col-lg-4 mb-5">
-                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal3">
+                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal3" id="thirdPic">
                             <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                                 <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                             </div>
@@ -292,29 +292,29 @@
                                         <div class="form-floating mb-3">
                                             <input class="form-control" id="handmadecard" type="text" placeholder="Enter your card number..." data-sb-validations="required" />
                                             <label for="handmadecard">信用卡卡號</label>
-                                            <div class="invalid-feedback" data-sb-feedback="Times:required">請填寫卡號.</div>
+                                            <div class="invalid-feedback" data-sb-feedback="handmadecard:required">請填寫卡號.</div>
                                         </div>
                                         <div class="form-floating mb-3">
                                             <input class="form-control" id="handmadeprice" type="text" placeholder="Enter your handmadeprice..." data-sb-validations="required" />
                                             <label for="handmadeprice">消費金額</label>
-                                            <div class="invalid-feedback" data-sb-feedback="price:required">請填寫金額.</div>
+                                            <div class="invalid-feedback" data-sb-feedback="handmadeprice:required">請填寫金額.</div>
                                         </div>
                                         <div class="form-floating mb-3">
                                             <input class="form-control" id="handmadeDate" type="date"  data-sb-validations="required" name="timeStart"/>
                                             <label for="handmadeDate">消費日期</label>
-                                            <div class="invalid-feedback" data-sb-feedback="Timezone:required">請填寫時間.</div>
+                                            <div class="invalid-feedback" data-sb-feedback="handmadeDate:required">請填寫時間.</div>
                                         </div>
                                         <div class="form-floating mb-3">
                                             <input class="form-control" id="handmadeTime" type="time"  data-sb-validations="required" name="timeStart"/>
                                             <label for="handmadeTime">消費時間</label>
-                                            <div class="invalid-feedback" data-sb-feedback="Timezone:required">請填寫時間.</div>
+                                            <div class="invalid-feedback" data-sb-feedback="handmadeTime:required">請填寫時間.</div>
                                         </div>
                                         <div class="d-none" id="submitSuccessMessage">
                                         </div>
                                         <!-- an error submitting the form-->
                                         <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
                                         <!-- Submit Button-->
-                                        <button class="btn btn-primary btn-xl disabled" id="submitButton" type="submit" name="updateButton">提交</button>
+                                        <button class="btn btn-primary btn-xl disabled" id="submitButton" type="submit" name="addDataButton">提交</button>
                                     </form>
                                 </div>
                             </div>
@@ -330,6 +330,7 @@
         <script src="script/scripts.js"></script>
         <script src="UpdateException.js"></script>
         <script src="login_register.js"></script>
+        <script src="addCostData.js"></script>
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <!-- * *                               SB Forms JS                               * *-->
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
