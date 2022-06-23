@@ -21,6 +21,7 @@ if($link){
     $row = mysqli_fetch_assoc($result);
     if($row["account_password"]==$bcc)
     {   
+        setcookie( "test", "$acc", time()+3600);
         echo ("<script>window.location.href='TheBestWeCanDo.html'</script>"); 
     }
     else
