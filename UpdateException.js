@@ -13,7 +13,7 @@ function throwDB(){
     //location.href = ".php?startTime=" + startTime;
     //location.href = ".php?endTime=" + endTime;
 
-    var tempJSON = {"price":price, "times":times, "startTime":startTime, "endTime":endTime};
+    var tempJSON = {"loginAcc":loginAcc, "price":price, "times":times, "startTime":startTime, "endTime":endTime};
     var myJSON = JSON.stringify(tempJSON);
     location.href = "UpdateException.php?package=" + myJSON;
 }
