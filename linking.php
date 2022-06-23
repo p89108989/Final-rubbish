@@ -22,8 +22,7 @@
         $email = $JSON["email"];
         $sql = "INSERT INTO login_system(num_ber,credit_card_number,email) VALUES ('$phonenumber','$creditcard','$email','$loginAcc') ";
         $sql = "update login_system set num_ber='$phonenumber', credit_card_number='$creditcard',email='$email' where account_id = '$loginAcc'";
-        $result = mysqli_query($link, $sql) or die("錯誤訊息：".mysqli_error($link));
-        $row = mysqli_fetch_assoc($result);
+        $result = mysqli_query($link, $sql); //or die("錯誤訊息：".mysqli_error($link));
         echo ("<script>window.location.href='TheBestWeCanDo.html'</script>");
     }
     else {
