@@ -17,7 +17,7 @@ if($link){
     $sql = "INSERT INTO login_system (account_id,account_password) VALUES ('$acc','$bcc') ";
     echo $sql;
     mysqli_query($link, $sql) or die("錯誤訊息：".mysqli_error($link));
-    echo ("<script>window.location.href='TheBestWeCanDo.html'</script>");
+    echo ("<script>window.location.href='JokeOnYou.html'</script>");
 }
 else {
     echo "不正確連接資料庫</br>" . mysqli_connect_error();
