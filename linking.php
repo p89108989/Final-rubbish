@@ -14,7 +14,7 @@
     $link = mysqli_connect($host,$dbuser,$dbpassword,$dbname);
     if($link){
         mysqli_query($link,'SET NAMES utf8');
-        echo "正確連接資料庫";
+        //echo "正確連接資料庫";
         $name = $JSON["name"];
         $phonenumber = $JSON["phonenumber"];
         $loginAcc = $_COOKIE["test"];
@@ -26,6 +26,8 @@
         echo ("<script>window.location.href='TheBestWeCanDo.html'</script>");
     }
     else {
-        echo "不正確連接資料庫</br>" . mysqli_connect_error();
+        //echo "不正確連接資料庫</br>" . mysqli_connect_error();
+        echo ("<script>window.alert('不正確連接資料庫')</script>");
+        echo ("<script>window.location.href='TheBestWeCanDo.html'</script>");
     }
 ?>

@@ -31,10 +31,12 @@
         }
         else
         {
-        $sql = "INSERT INTO time_limit (account_id,time_start,time_finish) VALUES ('$loginAcc','$timeStart','$timeEnd') ";
+        $timeStart=$timeStart."00";
+        $timeEnd=$timeEnd."00";
+        $sql = "INSERT INTO time_limit (account_id,time_start,time_finish) VALUES ('$loginAcc','$timeStart','$timeEnd')";
         }
         mysqli_query($link, $sql)or die("錯誤訊息：".mysqli_error($link));
-        $sql = "update login_system set predict_money_custom='$price', cost_in_one_hour='$times' where account_id = '$loginAcc'";
+        $sql = "update login_system set predict_money='$price', cost_in_one_hour='$times' where account_id = '$loginAcc'";
         mysqli_query($link, $sql)or die("錯誤訊息：".mysqli_error($link));
         echo ("<script>window.location.href='TheBestWeCanDo.html'</script>");
     }

@@ -21,6 +21,7 @@ function register(){
     //console.log(regAcc+" "+regPW);
     var b = {"regAcc":regAcc,"regPW":regPW};
     var myb = JSON.stringify(b);
+    window.alert(myb)
     location.href = "connect_test.php?package=" + myb; 
             //丟註冊帳號給php         //丟註冊密碼給php
 }
